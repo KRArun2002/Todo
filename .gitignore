@@ -1,0 +1,87 @@
+###############################################
+# Angular Frontend (TODO_CLIENT)
+###############################################
+
+# Compiled output
+TODO_CLIENT/dist
+TODO_CLIENT/tmp
+TODO_CLIENT/out-tsc
+TODO_CLIENT/bazel-out
+
+# Node
+TODO_CLIENT/node_modules
+TODO_CLIENT/npm-debug.log
+TODO_CLIENT/yarn-error.log
+
+# IDEs and editors
+TODO_CLIENT/.idea/
+TODO_CLIENT/.project
+TODO_CLIENT/.classpath
+TODO_CLIENT/.c9/
+TODO_CLIENT/*.launch
+TODO_CLIENT/.settings/
+TODO_CLIENT/*.sublime-workspace
+
+# Visual Studio Code
+TODO_CLIENT/.vscode/*
+!TODO_CLIENT/.vscode/settings.json
+!TODO_CLIENT/.vscode/tasks.json
+!TODO_CLIENT/.vscode/launch.json
+!TODO_CLIENT/.vscode/extensions.json
+TODO_CLIENT/.history/*
+
+# Miscellaneous
+TODO_CLIENT/.angular/cache
+TODO_CLIENT/.sass-cache/
+TODO_CLIENT/connect.lock
+TODO_CLIENT/coverage
+TODO_CLIENT/libpeerconnection.log
+TODO_CLIENT/testem.log
+TODO_CLIENT/typings
+TODO_CLIENT/__screenshots__/
+
+###############################################
+# .NET Backend (TODO_API)
+###############################################
+
+# Build results
+TODO_API/[Bb]in/
+TODO_API/[Oo]bj/
+TODO_API/[Ll]og/
+TODO_API/[Ll]ogs/
+
+# Visual Studio cache/options
+TODO_API/.vs/
+TODO_API/.vscode/
+TODO_API/*.user
+TODO_API/*.suo
+TODO_API/*.userosscache
+TODO_API/*.sln.docstates
+
+# DotNet specific
+TODO_API/project.lock.json
+TODO_API/project.fragment.lock.json
+TODO_API/artifacts/
+TODO_API/Generated\ Files/
+
+# NuGet
+TODO_API/*.nupkg
+TODO_API/*.snupkg
+TODO_API/publish/
+TODO_API/paket-files/
+TODO_API/packages/
+TODO_API/*.nuget.props
+TODO_API/*.nuget.targets
+
+# Others
+TODO_API/_ReSharper*/
+TODO_API/[Tt]est[Rr]esult*/
+TODO_API/[Bb]uild[Ll]og.*
+TODO_API/.DS_Store
+TODO_API/Thumbs.db
+
+###############################################
+# Global System Files
+###############################################
+.DS_Store
+Thumbs.db
