@@ -52,7 +52,6 @@ namespace TODO_API.Controllers
             if (todoItem.ListId <= 0)
                 return BadRequest("Valid list ID is required.");
 
-            // Validate priority
             var validPriorities = new[] { "Low", "Medium", "High" };
             if (!validPriorities.Contains(todoItem.Priority))
                 return BadRequest("Priority must be Low, Medium, or High.");
@@ -71,7 +70,6 @@ namespace TODO_API.Controllers
             if (todoItem.ListId <= 0)
                 return BadRequest("Valid list ID is required.");
 
-            // Validate priority
             var validPriorities = new[] { "Low", "Medium", "High" };
             if (!validPriorities.Contains(todoItem.Priority))
                 return BadRequest("Priority must be Low, Medium, or High.");

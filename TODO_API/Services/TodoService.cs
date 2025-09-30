@@ -54,7 +54,7 @@ namespace TODO_API.Services
         {
             return _todoItems
                 .OrderBy(i => i.Date)
-                .ThenBy(i => string.IsNullOrEmpty(i.Time) ? 1 : 0) // Items with time first
+                .ThenBy(i => string.IsNullOrEmpty(i.Time) ? 1 : 0)
                 .ThenBy(i => i.Time);
         }
 
@@ -63,7 +63,7 @@ namespace TODO_API.Services
             return _todoItems
                 .Where(i => i.ListId == listId)
                 .OrderBy(i => i.Date)
-                .ThenBy(i => string.IsNullOrEmpty(i.Time) ? 1 : 0) // Items with time first
+                .ThenBy(i => string.IsNullOrEmpty(i.Time) ? 1 : 0)
                 .ThenBy(i => i.Time);
         }
 

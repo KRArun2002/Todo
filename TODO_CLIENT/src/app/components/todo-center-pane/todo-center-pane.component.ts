@@ -23,12 +23,14 @@ export class TodoCenterPaneComponent {
   @Output() itemDeleted = new EventEmitter<number>();
   @Output() itemToggled = new EventEmitter<number>();
 
+
   isAddingItem = signal(false);
   newItemTitle = signal('');
   newItemDate = signal('');
   newItemTime = signal('');
   newItemPriority = signal<'Low' | 'Medium' | 'High'>('Medium');
   newItemTag = signal('');
+  errorMessage = signal('');
 
   get filteredAndSortedItems(): TodoItem[] {
     let items = this.todoItems.filter(item => item.listId === this.selectedListId);
@@ -73,6 +75,7 @@ export class TodoCenterPaneComponent {
         
         return 0;
       } else {
+        // Sort by priority
         const priorityOrder = { 'High': 1, 'Medium': 2, 'Low': 3 };
         return priorityOrder[a.priority] - priorityOrder[b.priority];
       }
@@ -93,24 +96,39 @@ export class TodoCenterPaneComponent {
   
   startAddingItem(): void {
     this.isAddingItem.set(true);
+    this.errorMessage.set('');
   }
 
+  // Add a todo item after validation
   addItem(): void {
-    console.log('called')
     const title = this.newItemTitle().trim();
     const date = this.newItemDate();
     const time = this.newItemTime().trim();
 
-    if (title && date) {
-      this.itemAdded.emit({
-        title,
-        date: new Date(date),
-        time: time || undefined,
-        priority: this.newItemPriority(),
-        tag: this.newItemTag().trim()
-      });
-      this.resetForm();
+    // Validation
+    if (!title && !date) {
+      this.errorMessage.set('Please enter a title and date');
+      return;
     }
+    if (!title) {
+      this.errorMessage.set('Please enter a title');
+      return;
+    }
+    if (!date) {
+      this.errorMessage.set('Please select a date');
+      return;
+    }
+
+    this.errorMessage.set('');
+    
+    this.itemAdded.emit({
+      title,
+      date: new Date(date),
+      time,
+      priority: this.newItemPriority(),
+      tag: this.newItemTag().trim()
+    });
+    this.resetForm();
   }
 
   cancelAddItem(): void {
@@ -131,6 +149,7 @@ export class TodoCenterPaneComponent {
     this.newItemTime.set('');
     this.newItemPriority.set('Medium');
     this.newItemTag.set('');
+    this.errorMessage.set('');
     this.isAddingItem.set(false);
   }
 
