@@ -38,9 +38,10 @@ cd todo_client
 
 npm install
 
-ng serveScreen Recording 2025-10-01 at 2.54.09 AM
+ng serve
 
 Frontend runs at: http://localhost:4200
+
 
 
 
