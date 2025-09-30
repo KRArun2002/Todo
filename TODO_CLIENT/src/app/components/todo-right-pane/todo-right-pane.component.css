@@ -1,0 +1,151 @@
+.filter-sort-pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.filter-section {
+  flex: 0 0 auto;
+  padding: 20px 16px;
+  border-bottom: 1px solid #333333;
+}
+
+.sort-section {
+  flex: 1;
+  padding: 20px 16px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-header h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #999999;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+  font-size: 20px;
+  color: white;
+}
+
+.clear-btn {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #3a3a3a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-btn:hover {
+  background-color: #333333;
+  color: #999999;
+}
+
+.filter-group {
+  margin-bottom: 16px;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 12px;
+  color: #888888;
+}
+
+.filter-control {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  font-size: 13px;
+  box-sizing: border-box;
+  background-color: #333333;
+  color: #e0e0e0;
+  transition: all 0.2s;
+}
+
+.filter-control:focus {
+  outline: none;
+  border-color: #4a4a4a;
+  background-color: #3a3a3a;
+}
+
+.filter-control::placeholder {
+  color: #666666;
+}
+
+.filter-control option {
+  background-color: #333333;
+  color: #e0e0e0;
+}
+
+.priority-dropdown {
+  appearance: none;           
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-sizing: border-box;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23aaaaaa" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.priority-dropdown:focus {
+  outline: none;
+  border-color: #555555;
+  background-color: #3a3a3a;
+}
+
+.priority-dropdown:hover {
+  background-color: #3a3a3a;
+}
+
+/* Sort tags styling */
+.sort-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.sort-tag {
+  padding: 10px 16px;
+  background-color: #333333;
+  color: #cccccc;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.sort-tag:hover {
+  background-color: #444444;
+}
+
+.sort-tag.active {
+  background-color: #f4c542;
+  color: #1a1a1a;
+  border-color: #f4c542;
+}
+
+.sort-tag .tag-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: inherit;
+}

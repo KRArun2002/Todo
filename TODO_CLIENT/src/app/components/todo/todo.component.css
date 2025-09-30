@@ -1,0 +1,28 @@
+.todo-container {
+  display: flex;
+  height: 100vh;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+.left-pane {
+  flex: 0 0 250px;
+  background-color: #2a2a2a;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.center-pane {
+  flex: 1 1 auto;
+  background-color: #1a1a1a;
+  overflow-y: auto;
+  min-width: 300px;
+}
+
+.right-pane {
+  flex: 0 0 280px;
+  background-color: #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}

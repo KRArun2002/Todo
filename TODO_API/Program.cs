@@ -1,9 +1,15 @@
+using TODO_API.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+// Add services to the container
+builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
+// Register TodoService as Singleton for in-memory storage
+builder.Services.AddSingleton<ITodoService, TodoService>();
+
+// Configure CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngular",
@@ -12,11 +18,9 @@ builder.Services.AddCors(options =>
                         .AllowAnyMethod());
 });
 
-builder.Services.AddControllers();
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();

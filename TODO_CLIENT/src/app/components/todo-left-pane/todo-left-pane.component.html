@@ -1,0 +1,40 @@
+<div class="lists-pane">
+  <div class="pane-header">
+    <h2>My Lists</h2>
+    @if (!isAddingList()) {
+      <button class="add-btn" (click)="startAddingList()">+</button>
+    }
+  </div>
+
+  @if (isAddingList()) {
+    <div class="add-list-form">
+      <input
+        type="text"
+        [(ngModel)]="newListName"
+        placeholder="List name"
+        class="list-input"
+        (keyup.enter)="addList()">
+      <div class="form-actions">
+        <button class="save-btn" (click)="addList()">Add</button>
+        <button class="cancel-btn" (click)="cancelAddList()">Cancel</button>
+      </div>
+    </div>
+  }
+
+  <ul class="lists-container">
+    @for (list of todoLists; track list.id) {
+      <li
+        class="list-item"
+        [class.selected]="list.id === selectedListId"
+        (click)="selectList(list.id)">
+        <span class="list-name">{{ list.name }}</span>
+        <button 
+          class="delete-list-btn" 
+          (click)="deleteList($event, list.id)"
+          title="Delete list">
+          ×
+        </button>
+      </li>
+    }
+  </ul>
+</div>

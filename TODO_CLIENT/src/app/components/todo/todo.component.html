@@ -1,0 +1,33 @@
+<div class="todo-container">
+  <!-- Left Pane: Todo Lists -->
+  <div class="left-pane">
+    <app-todo-left-pane
+      [todoLists]="todoLists()"
+      [selectedListId]="selectedListId()"
+      (listSelected)="onListSelected($event)"
+      (listAdded)="onListAdded($event)"
+      (listDeleted)="onListDeleted($event)">
+    </app-todo-left-pane>
+  </div>
+
+  <!-- Center Pane: Todo Items -->
+  <div class="center-pane">
+    <app-todo-center-pane
+      [todoItems]="todoItems()"
+      [selectedListId]="selectedListId()"
+      [filterCriteria]="filterCriteria()"
+      [sortBy]="sortBy()"
+      (itemAdded)="onItemAdded($event)"
+      (itemDeleted)="onItemDeleted($event)"
+      (itemToggled)="onItemToggled($event)">
+    </app-todo-center-pane>
+  </div>
+
+  <!-- Right Pane: Filter and Sort -->
+  <div class="right-pane">
+    <app-todo-right-pane
+      (filterChanged)="onFilterChanged($event)"
+      (sortChanged)="onSortChanged($event)">
+    </app-todo-right-pane>
+  </div>
+</div>

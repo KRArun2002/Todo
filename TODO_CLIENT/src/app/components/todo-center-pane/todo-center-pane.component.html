@@ -1,0 +1,157 @@
+<div class="items-pane">
+  <div class="pane-header">
+    <h2>Todo Items</h2>
+    @if (!isAddingItem() && selectedListId !== null) {
+      <button 
+        class="add-btn" 
+        (click)="startAddingItem()">
+        + Add Todo
+      </button>
+    }
+  </div>
+
+  @if (selectedListId === null) {
+    <div class="no-list-selected">
+      <p>Select a list from the left pane to view its todo items</p>
+    </div>
+  }
+
+  @if (isAddingItem()) {
+    <div class="add-item-form">
+      <div class="form-group">
+        <label>Title</label>
+        <input
+          type="text"
+          [(ngModel)]="newItemTitle"
+          placeholder="Enter todo title"
+          class="form-control">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date</label>
+          <input
+            type="date"
+            [(ngModel)]="newItemDate"
+            class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label>Time<small class="text-muted"> (optional)</small></label>
+          <input
+            type="time"
+            [(ngModel)]="newItemTime"
+            class="form-control">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Priority</label>
+          <select [(ngModel)]="newItemPriority" class="form-control priority-dropdown">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Tag<small class="text-muted"> (optional)</small></label>
+          <input
+            type="text"
+            [(ngModel)]="newItemTag"
+            placeholder="Enter tag"
+            class="form-control">
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="save-btn" (click)="addItem()">Add Todo</button>
+        <button class="cancel-btn" (click)="cancelAddItem()">Cancel</button>
+      </div>
+    </div>
+  }
+
+  @if (selectedListId !== null) {
+    @if (hasActiveFilters()) {
+      <div class="active-filters">
+        <span class="filters-label">Active Filters:</span>
+        <div class="filter-chips">
+          @if (filterCriteria.priority) {
+            <div class="filter-chip priority-filter">
+              <span class="filter-type">Priority:</span>
+              <span class="filter-value">{{ filterCriteria.priority }}</span>
+            </div>
+          }
+          @if (filterCriteria.tag) {
+            <div class="filter-chip tag-filter">
+              <span class="filter-type">Tag:</span>
+              <span class="filter-value">#{{ filterCriteria.tag }}</span>
+            </div>
+          }
+          @if (filterCriteria.date) {
+            <div class="filter-chip date-filter">
+              <span class="filter-type">Date:</span>
+              <span class="filter-value">{{ formatFilterDate(filterCriteria.date) }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    }
+    <div class="items-container">
+      @for (item of filteredAndSortedItems; track item.id) {
+        <div class="item-card" [class.completed]="item.isCompleted">
+          <div class="item-content">
+            <input 
+              type="checkbox" 
+              class="item-checkbox"
+              [checked]="item.isCompleted"
+              (change)="toggleItem(item.id)"
+              [id]="'checkbox-' + item.id">
+            
+            <div class="item-main">
+              <div class="item-header">
+                <h3>{{ item.title }}</h3>
+                <div class="item-header-actions">
+                  <span class="priority-badge" [ngClass]="getPriorityClass(item.priority)">
+                    {{ item.priority }}
+                  </span>
+                  <button 
+                    class="delete-item-btn" 
+                    (click)="deleteItem(item.id)"
+                    title="Delete item">
+                    ×
+                  </button>
+                </div>
+              </div>
+              <div class="item-details">
+                <div class="detail-row">
+                  <span class="detail-label">Date:</span>
+                  <span>{{ formatDate(item.date) }}</span>
+                </div>
+                @if (item.time) {
+                  <div class="detail-row">
+                    <span class="detail-label">Time:</span>
+                    <span>{{ item.time }}</span>
+                  </div>
+                }
+                @if (item.tag) {
+                  <div class="detail-row">
+                    <span class="detail-label">Tag:</span>
+                    <span class="tag-badge">{{ item.tag }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+      @if (filteredAndSortedItems.length === 0) {
+        <div class="no-items">
+          <p>No todo items found</p>
+        </div>
+      }
+    </div>
+  }
+</div>

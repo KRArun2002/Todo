@@ -1,0 +1,64 @@
+<div class="filter-sort-pane">
+  <!-- Filter Section (Top Half) -->
+  <div class="filter-section">
+    <div class="section-header">
+      <h3>Filter Todos</h3>
+      <button class="clear-btn" (click)="clearFilters()">Clear</button>
+    </div>
+
+    <div class="filter-group">
+      <label>Priority</label>
+      <select 
+        [(ngModel)]="filterPriority" 
+        (change)="onFilterPriorityChange()"
+        class="filter-control priority-dropdown">
+        <option value="">All Priorities</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>Tag</label>
+      <input
+        type="text"
+        [(ngModel)]="filterTag"
+        (input)="onFilterTagChange()"
+        placeholder="Filter by tag"
+        class="filter-control">
+    </div>
+
+    <div class="filter-group">
+      <label>Date</label>
+      <input
+        type="date"
+        [(ngModel)]="filterDate"
+        (change)="onFilterDateChange()"
+        class="filter-control">
+    </div>
+  </div>
+
+  <!-- Sort Section (Bottom Half) -->
+  <div class="sort-section">
+    <div class="section-header">
+      <h3>Sort By</h3>
+    </div>
+
+    <div class="sort-tags">
+      <button 
+        class="sort-tag"
+        [class.active]="sortBy() === 'date'"
+        (click)="selectSort('date')">
+        <span class="tag-label">Date</span>
+      </button>
+
+      <button 
+        class="sort-tag"
+        [class.active]="sortBy() === 'priority'"
+        (click)="selectSort('priority')">
+        <span class="tag-label">Priority</span>
+      </button>
+    </div>
+  </div>
+</div>
